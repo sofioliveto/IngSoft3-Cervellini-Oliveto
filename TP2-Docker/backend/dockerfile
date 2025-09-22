@@ -1,0 +1,29 @@
+# 1. Imagen base oficial de Go, ideal para construir apps Go
+FROM golang:1.21-alpine AS builder
+
+# 2. Establece directorio de trabajo
+WORKDIR /app
+
+# 3. Copia los archivos al contenedor
+COPY . .
+
+# 4. Descarga dependencias
+RUN go mod download
+
+# 5. Compila la app Go (binario llamado "main")
+RUN go build -o main .
+
+# 6. Imagen final, más liviana
+FROM alpine:latest
+
+# 7. Establece directorio de trabajo
+WORKDIR /app
+
+# 8. Copia el binario desde la imagen anterior
+COPY --from=builder /app/main .
+
+# 9. Expone el puerto del backend
+EXPOSE 8080
+
+# 10. Comando para ejecutar el binario
+CMD ["./main"]
