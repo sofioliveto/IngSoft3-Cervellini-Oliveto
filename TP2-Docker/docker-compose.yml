@@ -38,7 +38,7 @@ services:
 
   # ---------- Apps backend (MISMA IMAGEN) ----------
   backend-qa:
-    image: sofiioliveto/backend-app:dev
+    image: sofiioliveto/backend-app:v1.0
     container_name: backend-qa
     environment:
       ENVIRONMENT: qa
@@ -55,7 +55,7 @@ services:
     networks: [qa]
 
   backend-prod:
-    image: sofiioliveto/backend-app:dev
+    image: sofiioliveto/backend-app:v1.0
     container_name: backend-prod
     environment:
       ENVIRONMENT: prod
@@ -73,7 +73,7 @@ services:
 
   # ---------- Frontend ----------
   frontend:
-    image: sofiioliveto/frontend-app:dev
+    image: sofiioliveto/frontend-app:v1.0
     container_name: frontend
     ports:
       - "5173:80"
