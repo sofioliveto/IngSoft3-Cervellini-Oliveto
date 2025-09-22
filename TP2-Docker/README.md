@@ -14,12 +14,9 @@ Este proyecto contiene una aplicación completa con frontend (React), backend (G
 
 Las imágenes ya están disponibles en Docker Hub. Docker Compose las descargará automáticamente:
 
-```bash
-# Las imágenes se descargan automáticamente desde Docker Hub:
-# - sofiioliveto/backend-app:dev
-# - sofiioliveto/frontend-app:dev
-# - mysql:8.4
-```
+- sofiioliveto/backend-app:v1.0
+- sofiioliveto/frontend-app:v1.0
+- mysql:8.4
 
 **No necesitas construir las imágenes localmente.**
 
@@ -49,19 +46,19 @@ mysql-qa       Up (healthy)
 
 ### Frontend
 ```
-🖥️ URL: http://localhost:5173
+URL: http://localhost:5173
 ```
 
 ### Backend APIs
 
 #### Entorno QA
 ```
-⚙️ URL Base: http://localhost:8081
+URL Base: http://localhost:8081
 ```
 
 #### Entorno PROD  
 ```
-🚀 URL Base: http://localhost:8082
+URL Base: http://localhost:8082
 ```
 
 ### Endpoints principales:
@@ -79,7 +76,7 @@ Host: localhost
 Puerto: 3307
 Usuario: root
 Contraseña: 44898366
-Base de datos: dbarquisoft1
+Base de datos: db-qa
 ```
 
 ### Credenciales PROD
@@ -88,16 +85,16 @@ Host: localhost
 Puerto: 3308
 Usuario: root
 Contraseña: 44898366
-Base de datos: dbarquisoft1
+Base de datos: db-prod
 ```
 
 ### Conectar usando MySQL CLI:
 ```bash
 # QA
-mysql -h localhost -P 3307 -u root -p44898366 dbarquisoft1
+mysql -h localhost -P 3307 -u root -p44898366 db-qa
 
 # PROD
-mysql -h localhost -P 3308 -u root -p44898366 dbarquisoft1
+mysql -h localhost -P 3308 -u root -p44898366 db-prod
 ```
 
 ## ✅ Verificar que Todo Funciona
@@ -112,14 +109,20 @@ Todos deben mostrar status "Up".
 Abrir en navegador: `http://localhost:5173`
 
 ### 3. Probar backend QA
+Por consola:
 ```bash
 curl http://localhost:8081/search
 ```
+O por postman:
+Método GET, http://localhost:8081/search
 
 ### 4. Probar backend PROD
+Por consola:
 ```bash
 curl http://localhost:8082/search
 ```
+O por postman:
+Método GET, http://localhost:8082/search
 
 ### 5. Verificar bases de datos
 ```bash
